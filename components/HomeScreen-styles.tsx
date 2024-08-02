@@ -128,13 +128,17 @@ export const styles = StyleSheet.create({
         borderColor: '#E7E7E7',
         borderWidth:1.5,
         height: 200,
-        bottom: -100,
+        bottom: -120,
         backgroundColor:'#FFFFFF',
         padding:30,
 
         flexDirection:'row',
         alignItems:'center',
-        justifyContent:'center',
+        justifyContent:'between-space',
+    },
+    dailyTextContainer:{
+        marginRight:15,
+
     },
 
     dailyTextTime : {
@@ -146,7 +150,7 @@ export const styles = StyleSheet.create({
     dailyTextDate:{
         fontSize:40,
         color: '#111111',
-        fontWeight: '400',
+        fontWeight: '500',
         },
 
 
@@ -157,25 +161,53 @@ export const styles = StyleSheet.create({
         backgroundColor: '#F6F6F6',
         borderRadius: 30,
         margin: 11,
-        padding: 15,
+        padding: 12,
+        paddingBottom:20,
+        alignItems:'center',
+        justifyContent:'center',
+
       },
       dailyInner: {
-        flex: 1,
+        padding:25,
         justifyContent: 'center',
         alignItems: 'center',
       },
       imageInner: {
         flexDirection: 'row',
         alignItems: 'center', // Y축 정렬
+        padding:10,
       },
       SunFlowerImage: {
-        width: '25%',
-        height: 45,
+        width: '40%',
+        height: '110%',
         borderRadius: 50,
         marginRight: 10, // 이미지와 텍스트 사이의 여백
       },
       dailyText: {
-        fontSize: 18,
-        flexShrink: 1,
+//         flexShrink: 1,
       },
+        dailyTextFont:{
+//             fontSize: 18,
+            color:'#111111',
+            },
+
+       LikeContainer:{
+           backgroundColor: '#FFFFFF',
+           paddingLeft:10,
+           paddingRight:10,
+           height:40,
+           borderRadius:50,
+           alignSelf: 'flex-end',  // 위쪽에 배치
+           borderWidth:1.5,
+
+           borderColor:'#EFEFEF',
+           flexDirection:'row',
+           justifyContent:'center',
+           alignItems:'center',
+           },
+       favoriteHeart:{
+           width:20,
+           resizeMode:'contain',
+           margin:2,
+           },
 });
