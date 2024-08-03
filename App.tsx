@@ -2,20 +2,33 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import HomeScreen from './components/HomeScreen'; // Import HomeScreen
+import HomeScreen from './components/HomeScreen';
 import DailyScreen from './components/DailyScreen';
 import ScheduleScreen from './components/Schedule/ScheduleScreen';
+import TargetScreen from './components/TargetScreen';
 
-// Assuming you have these styles defined in your styles file
 import { styles } from './components/styles';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+// Stack Navigator for Daily Screen and Target Screen
+const DailyStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Daily" component={DailyScreen} />
+      <Stack.Screen name="Target" component={TargetScreen} />
+    </Stack.Navigator>
+  );
+};
 
 const App: React.FC = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        initialRouteName="홈" // 기본적으로 '홈' 화면을 보여줍니다.
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size }) => {
             let iconSource;
@@ -46,12 +59,12 @@ const App: React.FC = () => {
             );
           },
           tabBarStyle: {
-            borderRadius: 42,
+            borderTopLeftRadius: 35,
+            borderTopRightRadius: 35,
+            borderTopWidth:1,
             borderColor: '#DEDEDE',
             borderWidth: 1,
-            borderTopWidth: 1,
             height: 100,
-            margin: 20,
             elevation: 0,
             paddingRight: 40,
             paddingLeft: 40,
@@ -60,7 +73,6 @@ const App: React.FC = () => {
             fontSize: 15,
           },
           tabBarItemStyle: {
-            width: 20,
             padding: 24,
           },
           headerShown: false,
@@ -68,7 +80,7 @@ const App: React.FC = () => {
           tabBarInactiveTintColor: 'gray',
         })}
       >
-        <Tab.Screen name="일상" component={DailyScreen} />
+        <Tab.Screen name="일상" component={DailyStack} />
         <Tab.Screen name="홈" component={HomeScreen} />
         <Tab.Screen name="일정" component={ScheduleScreen} />
       </Tab.Navigator>
